@@ -1,11 +1,17 @@
 import axios from 'axios';
 
-const ncMarketPlace = axios.create({
+const ncNewsBe = axios.create({
   baseURL: 'https://nc-news-be-ntk2.onrender.com/api',
 });
 
 export const getArticles = () => {
-  return ncMarketPlace.get('/articles').then((res) => {
+  return ncNewsBe.get('/articles').then((res) => {
     return res.data.articles;
+  });
+};
+
+export const getSingleArticle = (articleId) => {
+  return ncNewsBe.get(`/articles/${articleId}`).then((res) => {
+    return res.data;
   });
 };
