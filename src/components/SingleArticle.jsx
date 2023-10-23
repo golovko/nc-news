@@ -28,11 +28,12 @@ export default function SingleArticle() {
   ) : isLoading ? (
     <div className='loader'></div>
   ) : (
-    <>
-      <article className='single-article'>
+    <article>
+      <h1>{article.title}</h1>
+
+      <div className='single-article'>
         <img src={article.article_img_url} />
         <div className='art-text'>
-          <h1>{article.title}</h1>
           <h3>{article.topic}</h3>
           <div className='votes'>
             <i className='fas fa-heart'></i>
@@ -40,10 +41,12 @@ export default function SingleArticle() {
             <p>Comments: {article.comment_count}</p>
           </div>
           <p>by {' ' + article.author}</p>
+          <p> published {' ' + new Date(article.created_at).toDateString()}</p>
+
           <p>{article.body}</p>
         </div>
-      </article>
-      <Comments />
-    </>
+      </div>
+      <Comments article_id={article_id} />
+    </article>
   );
 }

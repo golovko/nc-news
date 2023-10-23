@@ -152,6 +152,10 @@
   flex-direction: row;
 }
 
+.single-article p{
+  padding: 0 12px;
+}
+
 .single-article img {
   width: 45%;
   height: auto;
@@ -161,9 +165,19 @@
 .comments {
   display: block;
   min-height: 250px;
-  background-color: #333;
+  list-style-type: none;
 }
 
+.comment {
+  background-color: #333;
+  border: none;
+  padding: 12px 34px;
+  margin: 8px;
+}
+
+.comment button {
+  background-color: #333;  
+}
 
 
 .loader {
@@ -185,4 +199,29 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+
+
+.image-container {
+  background-image: url("../bg_image.jpg");
+  background-size: cover;
+  position: relative;
+  height: 250px;
+}
+
+.text {
+  background-color: white;
+  color: black;
+  font-size: 5vw;
+  font-weight: bold;
+  margin: 0 auto;
+  padding: 10px;
+  width: 50%;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: screen;
 }
