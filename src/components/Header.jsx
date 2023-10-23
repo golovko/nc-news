@@ -3,7 +3,9 @@ import React from 'react';
 export default function Header() {
   return (
     <header>
-      <h1 className='logo'>NC News</h1>
+      <div className='image-container'>
+        <div className='text'>NC News</div>
+      </div>
     </header>
   );
 }

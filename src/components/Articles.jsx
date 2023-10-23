@@ -39,6 +39,10 @@ export default function Articles() {
                   <p>Comments: {article.comment_count}</p>
                 </div>
                 <p>by {' ' + article.author}</p>
+                <p>
+                  published {' ' + new Date(article.created_at).toDateString()}
+                </p>
+
                 <Link to={'/articles/' + article.article_id}>Read more...</Link>
               </div>
             </li>
