@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { getSingleArticle, updateArticle } from '../../utils/api';
-import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import Comments from './Comments';
 import Vote from './Vote';
@@ -43,14 +42,9 @@ export default function SingleArticle() {
             votes={article.votes}
             update={updateArticle}
           />
-          {/* <div className='votes'>
-            <i className='fas fa-heart'></i>
-            <p>{article.votes}</p>
-            <p>Comments: {article.comment_count}</p>
-          </div> */}
+          <p>Comments: {article.comment_count}</p>
           <p>by {' ' + article.author}</p>
           <p> published {' ' + new Date(article.created_at).toDateString()}</p>
-
           <p>{article.body}</p>
         </div>
       </div>

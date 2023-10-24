@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { getComments, updateComment } from '../../utils/api';
 import Vote from './Vote';
+import PostComment from './PostComment';
 
 export default function Comments({ article_id }) {
-  const [comments, setComments] = useState({});
+  const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(null);
 
@@ -41,7 +42,6 @@ export default function Comments({ article_id }) {
                 votes={comment.votes}
                 update={updateComment}
               />
-              {/* <i className='fa-regular fa-star'>{comment.votes}</i> */}
               <p>by {' ' + comment.author}</p>
               <p>posted {' ' + new Date(comment.created_at).toDateString()}</p>
               <button className='del-button'>❌</button>
@@ -49,14 +49,7 @@ export default function Comments({ article_id }) {
           );
         })}
       </ul>
-      <div>
-        <form>
-          <label>
-            <textarea name='newComment' rows='5' cols='33' />
-          </label>
-          <button>Post comment</button>
-        </form>
-      </div>
+      <PostComment article_id={article_id} setComments={setComments} />
     </>
   );
 }
