@@ -1,12 +1,20 @@
-import React from 'react';
-import { Link, Routes, Route } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, Route, Routes } from 'react-router-dom';
+import { getTopics } from '../../utils/api';
 
 export default function NavBar() {
+  const [topics, setTopics] = useState([]);
+  useEffect(() => {
+    getTopics().then((fetchedTopics) => {
+      setTopics(fetchedTopics);
+    });
+  }, []);
+
   return (
     <nav>
       <div className='navbar'>
         <Link to='/'>Home</Link>
-        <a href='#news'>News</a>
+        <Link to='/topics'>Topics</Link>
         <div className='dropdown'>
           <a href='#' className='dropbtn'>
             Articles
@@ -16,9 +24,13 @@ export default function NavBar() {
             <Link to='/articles' className='dropbtn'>
               All articles <i className='fa fa-caret-down'></i>
             </Link>
-            <a href='#'>Topic 1</a>
-            <a href='#'>Topic 2</a>
-            <a href='#'>Topic 3</a>
+            {topics.map((topic) => {
+              return (
+                <Link to={'/articles/topics/' + topic.slug} key={topic.slug}>
+                  {topic.slug}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </div>
