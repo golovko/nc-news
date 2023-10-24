@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { getSingleArticle } from '../../utils/api';
+import { getSingleArticle, updateArticle } from '../../utils/api';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import Comments from './Comments';
+import Vote from './Vote';
 
 export default function SingleArticle() {
   const [article, setArticle] = useState({});
@@ -16,6 +17,7 @@ export default function SingleArticle() {
       .then((fetchedArticle) => {
         setArticle(fetchedArticle);
         setIsLoading(false);
+        setIsError(null);
       })
       .catch(() => {
         setIsError(true);
@@ -35,11 +37,17 @@ export default function SingleArticle() {
         <img src={article.article_img_url} />
         <div className='art-text'>
           <h3>{article.topic}</h3>
-          <div className='votes'>
+          <Vote
+            id={article.article_id}
+            type='heart'
+            votes={article.votes}
+            update={updateArticle}
+          />
+          {/* <div className='votes'>
             <i className='fas fa-heart'></i>
             <p>{article.votes}</p>
             <p>Comments: {article.comment_count}</p>
-          </div>
+          </div> */}
           <p>by {' ' + article.author}</p>
           <p> published {' ' + new Date(article.created_at).toDateString()}</p>
 

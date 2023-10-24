@@ -12,6 +12,7 @@ export default function Articles() {
       .then((fetchedArticles) => {
         setArticles(fetchedArticles);
         setIsLoading(false);
+        setIsError(null);
       })
       .catch(() => {
         setIsError(true);

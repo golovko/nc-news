@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { getComments } from '../../utils/api';
-import { Link } from 'react-router-dom';
+import { getComments, updateComment } from '../../utils/api';
+import Vote from './Vote';
 
 export default function Comments({ article_id }) {
   const [comments, setComments] = useState({});
@@ -13,6 +13,7 @@ export default function Comments({ article_id }) {
       .then((fetchedComments) => {
         setComments(fetchedComments);
         setIsLoading(false);
+        setIsError(null);
       })
       .catch(() => {
         setIsError(true);
@@ -34,10 +35,16 @@ export default function Comments({ article_id }) {
           return (
             <li className='comment' key={comment.comment_id}>
               <p>{comment.body}</p>
-              <i className='fa-regular fa-star'>{comment.votes}</i>
+              <Vote
+                id={comment.comment_id}
+                type='star'
+                votes={comment.votes}
+                update={updateComment}
+              />
+              {/* <i className='fa-regular fa-star'>{comment.votes}</i> */}
               <p>by {' ' + comment.author}</p>
               <p>posted {' ' + new Date(comment.created_at).toDateString()}</p>
-              <button>❌</button>
+              <button className='del-button'>❌</button>
             </li>
           );
         })}

@@ -16,8 +16,24 @@ export const getSingleArticle = (articleId) => {
   });
 };
 
+export const updateArticle = (articleId, update) => {
+  return ncNewsBe
+    .patch(`/articles/${articleId}`, { inc_votes: update })
+    .then((res) => {
+      return res.data;
+    });
+};
+
 export const getComments = (articleId) => {
   return ncNewsBe.get(`/articles/${articleId}/comments`).then((res) => {
     return res.data.comments;
   });
+};
+
+export const updateComment = (commentId, update) => {
+  return ncNewsBe
+    .patch(`/comments/${commentId}`, { inc_votes: update })
+    .then((res) => {
+      return res.data;
+    });
 };
