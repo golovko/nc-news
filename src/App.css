@@ -119,6 +119,8 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  padding: 0;
+  justify-content:flex-start;
 }
 /* .articles img{
   height: 250px;
@@ -131,9 +133,9 @@
   border: none;
   border-radius: 12px;
   background-color: rgba(249, 249, 249, 0.069);
-  margin: 8px;
   display: flex;
   flex-direction: row;
+  margin: 8px;
 }
 
 .article-text{
@@ -166,6 +168,8 @@
   display: block;
   min-height: 250px;
   list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 .comment {
@@ -179,6 +183,44 @@
   background-color: #333;  
 }
 
+.post-comment {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  background-color: rgba(249, 249, 249, 0.069);
+  margin: 8px;
+  padding: 24px;
+}
+
+.post-comment textarea {
+  width: 80%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  color: #333;
+}
+
+.post-comment button {
+  background-color: rgb(22, 22, 22);
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 20%;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+.post-comment button:disabled {
+    background-color: rgba(22, 22, 22, 0.407);
+    cursor:default;
+}
+
+.post-comment input, label {
+  display: block;
+}
+
 
 .loader {
   border: 16px solid #f3f3f3;
@@ -186,8 +228,8 @@
   border-top: 16px solid #3498db;
   /* Blue */
   border-radius: 50%;
-  width: 120px;
-  height: 120px;
+  width: 48px;
+  height: 48px;
   animation: spin 2s linear infinite;
 }
 
@@ -227,8 +269,6 @@
 }
 
 
-
-
 /* The alert message box */
 .alert {
   padding: 20px;
@@ -254,3 +294,6 @@
 .closebtn:hover {
   color: black;
 }
+
+
+

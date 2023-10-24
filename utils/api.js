@@ -37,3 +37,11 @@ export const updateComment = (commentId, update) => {
       return res.data;
     });
 };
+
+export const postComment = (articleId, comment) => {
+  return ncNewsBe
+    .post(`/articles/${articleId}/comments/`, comment)
+    .then((res) => {
+      return res;
+    });
+};
