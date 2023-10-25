@@ -12,28 +12,17 @@ export default function NavBar() {
 
   return (
     <nav>
-      <div className='navbar'>
-        <Link to='/'>Home</Link>
-        <Link to='/topics'>Topics</Link>
-        <div className='dropdown'>
-          <a href='#' className='dropbtn'>
-            Articles
-            <i className='fa fa-caret-down'></i>
-          </a>
-          <div className='dropdown-content'>
-            <Link to='/articles' className='dropbtn'>
-              All articles <i className='fa fa-caret-down'></i>
-            </Link>
-            {topics.map((topic) => {
-              return (
-                <Link to={'/articles/topics/' + topic.slug} key={topic.slug}>
-                  {topic.slug}
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </div>
+      <ul className='navbar'>
+        <li className='dropbtn'>
+          <Link to='/'>Home</Link>
+        </li>
+        <li className='dropbtn'>
+          <Link to='/topics'>Topics</Link>
+        </li>
+        <li className='dropbtn'>
+          <Link to='/articles'>Articles</Link>
+        </li>
+      </ul>
     </nav>
   );
 }

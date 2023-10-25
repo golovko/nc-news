@@ -15,9 +15,9 @@ export const getArticles = (
     .get('/articles/', {
       params: {
         topic: topic,
-        page: page,
+        p: page,
         limit: limit,
-        sortBy: sortBy,
+        sort_by: sortBy,
         order: order,
       },
     })
