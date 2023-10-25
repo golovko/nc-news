@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { getArticles } from '../../utils/api';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
 
 export default function Articles({ page, limit, sortBy, order }) {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(null);
   const { topic } = useParams();
+  //const [searchParams, setSearchParams] = useSearchParams();
+
+  //console.dir(searchParams.get('search_param'));
   useEffect(() => {
     setIsLoading(true);
     getArticles(topic, page, limit, sortBy, order)
