@@ -40,9 +40,15 @@
   color: #888;
 }
 
+/* nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+} */
 
 /* Navbar container */
 .navbar {
+  display: flex;
   overflow: hidden;
   background-color: #333;
   font-family: Arial;
@@ -387,6 +393,13 @@ figure {
   background-color: #1b5e00;
 }
 
+/* TODO: popup */
+.deleted {
+    background-color: orange;
+    position: sticky;
+    z-index: 999;
+}
+
 /* The close button */
 .closebtn {
   margin-left: 15px;
@@ -496,4 +509,21 @@ input:checked+.slider:before {
 .selector button {
   margin: 4px;
   padding: 8px;
+}
+
+.username{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 8px 0;
+}
+
+.username img{
+  width: 50px;
+  height: 50px;
+}
+.username p {
+  font-size: 24px;
+  padding: 6px;
+  margin: 0;
 }

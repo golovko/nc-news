@@ -62,8 +62,20 @@ export const postComment = (articleId, comment) => {
     });
 };
 
+export const deleteComment = (commentId) => {
+  return ncNewsBe.delete(`/comments/${commentId}`).then((res) => {
+    return res;
+  });
+};
+
 export const getTopics = () => {
   return ncNewsBe.get('/topics').then((res) => {
     return res.data.topics;
+  });
+};
+
+export const getUser = (username) => {
+  return ncNewsBe.get('/users/' + username).then((res) => {
+    return res.data;
   });
 };

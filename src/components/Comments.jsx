@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { getComments, updateComment } from '../../utils/api';
+import React, { useState, useEffect, useContext } from 'react';
+import { deleteComment, getComments, updateComment } from '../../utils/api';
 import Vote from './Vote';
 import PostComment from './PostComment';
+import { UserContext } from '../contexts/UserContext';
 
 export default function Comments({ article_id }) {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(null);
+  const { user } = useContext(UserContext);
+  const [isDeleted, setIsDeleted] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -21,6 +24,23 @@ export default function Comments({ article_id }) {
         setIsLoading(false);
       });
   }, []);
+
+  const deleteHandler = (comment_id) => {
+    setIsLoading(true);
+    deleteComment(comment_id)
+      .then((res) => {
+        setIsDeleted(true);
+        setIsLoading(false);
+        setTimeout(() => {
+          setIsDeleted(false);
+        }, 3000);
+        setIsError(null);
+      })
+      .catch(() => {
+        setIsError(true);
+        setIsLoading(false);
+      });
+  };
 
   return isError ? (
     <p>Something went wrong</p>
@@ -44,11 +64,28 @@ export default function Comments({ article_id }) {
               />
               <p>by {' ' + comment.author}</p>
               <p>posted {' ' + new Date(comment.created_at).toDateString()}</p>
-              <button className='del-button'>❌</button>
+              <button
+                onClick={() => deleteHandler(comment.comment_id)}
+                className='del-button'
+                disabled={isLoading || user.username !== comment.author}>
+                ❌
+              </button>
             </li>
           );
         })}
       </ul>
+      {isDeleted ? (
+        <div className='alert deleted'>
+          <span
+            className='closebtn'
+            onClick={() => {
+              setIsError(null);
+            }}>
+            &times;
+          </span>
+          Comment successfully deleted.
+        </div>
+      ) : null}
       <PostComment article_id={article_id} setComments={setComments} />
     </>
   );
