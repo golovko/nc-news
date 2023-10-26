@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { postComment } from '../../utils/api';
-import { username } from '../App';
+import { UserContext } from '../contexts/UserContext';
 
 export default function PostComment({ article_id, setComments }) {
   const [isLoading, setIsLoading] = useState(false);
   const [isPosted, setIsPosted] = useState(false);
   const [isError, setIsError] = useState(null);
   const [comment, setComment] = useState('');
+  const { user } = useContext(UserContext);
 
   const onChangeHandler = (e) => {
     setComment(e.target.value);
@@ -16,7 +17,7 @@ export default function PostComment({ article_id, setComments }) {
     e.preventDefault();
     setIsLoading(true);
     postComment(article_id, {
-      username: username,
+      username: user.username,
       body: comment,
     })
       .then((response) => {

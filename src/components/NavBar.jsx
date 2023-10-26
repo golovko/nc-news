@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import { getTopics } from '../../utils/api';
+import User from './User';
 
 export default function NavBar() {
   const [topics, setTopics] = useState([]);
