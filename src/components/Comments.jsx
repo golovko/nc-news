@@ -10,6 +10,7 @@ export default function Comments({ article_id }) {
   const [isError, setIsError] = useState(null);
   const { user } = useContext(UserContext);
   const [isDeleted, setIsDeleted] = useState(false);
+  const [update, setUpdate] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -23,7 +24,7 @@ export default function Comments({ article_id }) {
         setIsError(true);
         setIsLoading(false);
       });
-  }, []);
+  }, [update]);
 
   const deleteHandler = (comment_id) => {
     setIsLoading(true);
@@ -35,6 +36,7 @@ export default function Comments({ article_id }) {
           setIsDeleted(false);
         }, 3000);
         setIsError(null);
+        setUpdate(!update);
       })
       .catch(() => {
         setIsError(true);

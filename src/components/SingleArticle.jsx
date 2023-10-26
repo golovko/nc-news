@@ -3,6 +3,8 @@ import { getSingleArticle, updateArticle } from '../../utils/api';
 import { useParams } from 'react-router-dom';
 import Comments from './Comments';
 import Vote from './Vote';
+import NotFound from './errors/NotFound';
+import BadRequest from './errors/BadRequest';
 
 export default function SingleArticle() {
   const [article, setArticle] = useState({});
@@ -18,14 +20,21 @@ export default function SingleArticle() {
         setIsLoading(false);
         setIsError(null);
       })
-      .catch(() => {
-        setIsError(true);
+      .catch((err) => {
+        setIsError(err.response.status);
         setIsLoading(false);
       });
   }, []);
 
   return isError ? (
-    <p>Something went wrong</p>
+    isError === 404 ? (
+      <NotFound />
+    ) : (
+      <>
+        <h2>Something really bad happened 😱</h2>
+        <BadRequest />
+      </>
+    )
   ) : isLoading ? (
     <div className='loader'></div>
   ) : (

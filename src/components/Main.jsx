@@ -5,6 +5,7 @@ import Home from './Home';
 import SingleArticle from './SingleArticle';
 import Topics from './Topics';
 import Selector from './Selector';
+import NonExistentPath from './errors/NonExistentPath';
 
 export default function Main() {
   const [order, setOrder] = useState('asc');
@@ -61,6 +62,7 @@ export default function Main() {
         />
         <Route path='/articles/:article_id' element={<SingleArticle />} />
         <Route path='/topics' element={<Topics />} />
+        <Route path='*' element={<NonExistentPath />} />
       </Routes>
     </main>
   );
