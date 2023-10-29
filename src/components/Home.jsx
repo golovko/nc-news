@@ -1,7 +1,7 @@
 import React from 'react';
 import Articles from './Articles';
-import Comments from './Comments';
 import Topics from './Topics';
+import ArticleCard from './ArticleCard';
 
 export default function Home() {
   return (
@@ -20,6 +20,9 @@ export default function Home() {
         <figure className='banner'>
           <img src='banner.jpg' />
         </figure>
+      </section>
+      <section>
+        <ArticleCard />
       </section>
     </>
   );

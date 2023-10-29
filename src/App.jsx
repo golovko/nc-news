@@ -5,9 +5,6 @@ import Footer from './components/Footer';
 import './App.css';
 import User from './components/User';
 
-//TODO: Hard-coded user name, must be changed after implementing user authentication
-export const username = 'happyamy2016';
-
 function App() {
   return (
     <>
