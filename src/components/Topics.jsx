@@ -15,7 +15,7 @@ export default function Topics() {
     <div className='topics-container'>
       <ul className='topics'>
         {topics.map((currentTopic) => {
-          let classTag = 'tag ' + currentTopic.slug;
+          let classTag = 'topic ' + currentTopic.slug;
           classTag += topic === currentTopic.slug ? ' active-tag' : '';
           return (
             <li className={classTag} key={currentTopic.slug}>

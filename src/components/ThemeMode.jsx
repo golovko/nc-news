@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 export default function ThemeMode() {
   const [theme, setTheme] = useState(localStorage.getItem('theme'));
+  document.getElementById('root').setAttribute('data-theme', theme);
 
   const switchTheme = (e) => {
     if (e.target.checked) {
@@ -14,7 +15,6 @@ export default function ThemeMode() {
       localStorage.setItem('theme', 'light');
     }
   };
-
   return (
     <div className='theme-switch-wrapper'>
       <p>Dark mode</p>

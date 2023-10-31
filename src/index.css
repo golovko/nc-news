@@ -179,6 +179,8 @@ body {
   --color-text: #e1e1ff;
   --bg-color: #161625;
   --heading-color: #818cab;
+  --card-bg: var(--black-50);
+  --header-background-color: var(--black);
 }
 
 [data-theme="light"] {
@@ -186,6 +188,8 @@ body {
   --secondary-color: #092983;
   --color-text: #242424;
   --bg-color: #e0e0e0;
+  --card-bg: var(--white);
   --heading-color: #232834;
   --button-text: #e1e1ff;
+  --header-background-color:var(--white);
 }

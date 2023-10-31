@@ -61,7 +61,16 @@ export default function Main() {
           }
         />
         <Route path='/articles/:article_id' element={<SingleArticle />} />
-        <Route path='/topics' element={<Topics />} />
+        <Route
+          path='/topics'
+          element={
+            <>
+              <div className='divider'></div>
+              <Topics />
+              <div className='divider'></div>
+            </>
+          }
+        />
         <Route path='*' element={<NonExistentPath />} />
       </Routes>
     </main>

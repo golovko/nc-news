@@ -38,7 +38,7 @@ export default function PostComment({ article_id, setComments }) {
   };
 
   return (
-    <>
+    <section>
       <h2>Post a comment</h2>
       <div className='post-comment'>
         <form onSubmit={saveComment}>
@@ -51,7 +51,9 @@ export default function PostComment({ article_id, setComments }) {
             name='newComment'
             rows='5'
           />
-          <button disabled={!comment || isLoading}>Post comment</button>
+          <button disabled={!comment || isLoading || !user.username}>
+            Post comment
+          </button>
         </form>
         {isError ? (
           <div className='alert'>
@@ -78,6 +80,6 @@ export default function PostComment({ article_id, setComments }) {
           </div>
         ) : null}
       </div>
-    </>
+    </section>
   );
 }

@@ -9,7 +9,7 @@ export default function Home() {
       <h1>Welcome to NC News portal!</h1>
       <section>
         <h2>Latest articles</h2>
-        <Articles page='1' limit='4' sortBy='created_at' order='asc' />
+        <Articles page='1' limit='3' sortBy='created_at' order='asc' />
       </section>
       <section>
         <h2>Topics</h2>
@@ -20,9 +20,6 @@ export default function Home() {
         <figure className='banner'>
           <img src='banner.jpg' />
         </figure>
-      </section>
-      <section>
-        <ArticleCard />
       </section>
     </>
   );

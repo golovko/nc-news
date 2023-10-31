@@ -42,8 +42,10 @@ export default function SingleArticle() {
       <h1>{article.title}</h1>
 
       <div className='single-article'>
-        <div className={'tag ' + article.topic}>{article.topic}</div>
-        <img src={article.article_img_url} />
+        <div className='image'>
+          <div className={'tag ' + article.topic}>{article.topic}</div>
+          <img src={article.article_img_url} />
+        </div>
         <div className='art-text'>
           <h3>{article.topic}</h3>
           <Vote

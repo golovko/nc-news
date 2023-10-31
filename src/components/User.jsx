@@ -10,11 +10,16 @@ export default function User() {
   const userHandler = (e) => {
     e.preventDefault();
     setIsLoading(true);
-    getUser(username).then((fetchedUser) => {
-      setUser(fetchedUser);
-      setIsLoading(false);
-      setUsername('');
-    });
+    getUser(username)
+      .then((fetchedUser) => {
+        setUser(fetchedUser);
+        setIsLoading(false);
+        setUsername('');
+      })
+      .catch((err) => {
+        alert('Username not found');
+        setIsLoading(false);
+      });
   };
 
   return isLoading ? (
@@ -31,22 +36,20 @@ export default function User() {
     </div>
   ) : (
     <div className='username'>
-      <div>
-        <form onSubmit={userHandler}>
-          <label>
-            Login:
-            <input
-              value={username}
-              onChange={(e) => {
-                setUsername(e.target.value);
-              }}
-            />
-          </label>
-          <button type='submit' disabled={isLoading}>
+      <form onSubmit={userHandler}>
+        <label>
+          Username:
+          <input
+            value={username}
+            onChange={(e) => {
+              setUsername(e.target.value);
+            }}
+          />
+          <button className='login-button' type='submit' disabled={isLoading}>
             Login
           </button>
-        </form>
-      </div>
+        </label>
+      </form>
     </div>
   );
 }
