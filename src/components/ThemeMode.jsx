@@ -1,16 +1,14 @@
-import React, { useState } from 'react';
-
 export default function ThemeMode() {
-  const [theme, setTheme] = useState(localStorage.getItem('theme'));
-  document.getElementById('root').setAttribute('data-theme', theme);
+  let initTheme = localStorage.getItem('theme')
+    ? localStorage.getItem('theme')
+    : 'light';
+  document.getElementById('root').setAttribute('data-theme', initTheme);
 
   const switchTheme = (e) => {
     if (e.target.checked) {
-      setTheme('dark');
       document.getElementById('root').setAttribute('data-theme', 'dark');
       localStorage.setItem('theme', 'dark');
     } else {
-      setTheme('light');
       document.getElementById('root').setAttribute('data-theme', 'light');
       localStorage.setItem('theme', 'light');
     }
@@ -20,7 +18,7 @@ export default function ThemeMode() {
       <p>Dark mode</p>
       <label className='theme-switch' htmlFor='checkbox'>
         <input
-          defaultChecked={theme === 'dark'}
+          defaultChecked={localStorage.getItem('theme') === 'dark'}
           onChange={(e) => switchTheme(e)}
           type='checkbox'
           id='checkbox'

@@ -154,6 +154,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   box-sizing: border-box;
+  background-color: var(--bg-color);
 }
 
 @media (prefers-color-scheme: light) {
@@ -191,5 +192,5 @@ body {
   --card-bg: var(--white);
   --heading-color: #232834;
   --button-text: #e1e1ff;
-  --header-background-color:var(--white);
+  --header-background-color: var(--white);
 }
