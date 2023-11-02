@@ -362,6 +362,16 @@ figure {
   right: 0;
 }
 
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .image-container {
   background-image: url("../bg_image.jpg");
   background-size: cover;
