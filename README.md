@@ -8,6 +8,8 @@ This is a Single Page Application (SPA) built using React.js. It provides a C.R.
 
 [https://newsnc.netlify.app/](https://newsnc.netlify.app/)
 
+**Please note!** The first page opening may take 30-40 seconds due to the fact that the backend is hosted for free, which is why the service puts the account on hold if there are no more requests and it takes time to launch the instance with the backend.
+
 ## Back-End Repository
 
 The back-end of this project is available in a separate repository. You can find it here: [https://github.com/golovko/be-nc-news](https://github.com/golovko/be-nc-news)
